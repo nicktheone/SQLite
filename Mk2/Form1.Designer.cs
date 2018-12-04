@@ -28,47 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonAddCustomer = new System.Windows.Forms.Button();
+            this.buttonRemoveByIndex = new System.Windows.Forms.Button();
+            this.buttonRecoverDB = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.buttonRecoverByIndex = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonCreateDB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button7
+            // buttonAddCustomer
             // 
-            this.button7.Location = new System.Drawing.Point(58, 234);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 18;
-            this.button7.Text = "Add Customer";
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonAddCustomer.AutoSize = true;
+            this.buttonAddCustomer.Location = new System.Drawing.Point(114, 15);
+            this.buttonAddCustomer.Name = "buttonAddCustomer";
+            this.buttonAddCustomer.Size = new System.Drawing.Size(107, 27);
+            this.buttonAddCustomer.TabIndex = 18;
+            this.buttonAddCustomer.Text = "Add Customer";
+            this.buttonAddCustomer.UseVisualStyleBackColor = true;
+            this.buttonAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
             // 
-            // button6
+            // buttonRemoveByIndex
             // 
-            this.button6.AutoSize = true;
-            this.button6.Location = new System.Drawing.Point(139, 87);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(127, 27);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Remove By Index";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonRemoveByIndex.AutoSize = true;
+            this.buttonRemoveByIndex.Location = new System.Drawing.Point(139, 87);
+            this.buttonRemoveByIndex.Name = "buttonRemoveByIndex";
+            this.buttonRemoveByIndex.Size = new System.Drawing.Size(127, 27);
+            this.buttonRemoveByIndex.TabIndex = 17;
+            this.buttonRemoveByIndex.Text = "Remove By Index";
+            this.buttonRemoveByIndex.UseVisualStyleBackColor = true;
+            this.buttonRemoveByIndex.Click += new System.EventHandler(this.buttonRemoveByIndex_Click);
             // 
-            // button4
+            // buttonRecoverDB
             // 
-            this.button4.AutoSize = true;
-            this.button4.Location = new System.Drawing.Point(534, 24);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 27);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Recover DB";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonRecoverDB.AutoSize = true;
+            this.buttonRecoverDB.Location = new System.Drawing.Point(534, 24);
+            this.buttonRecoverDB.Name = "buttonRecoverDB";
+            this.buttonRecoverDB.Size = new System.Drawing.Size(94, 27);
+            this.buttonRecoverDB.TabIndex = 15;
+            this.buttonRecoverDB.Text = "Recover DB";
+            this.buttonRecoverDB.UseVisualStyleBackColor = true;
+            this.buttonRecoverDB.Click += new System.EventHandler(this.buttonRecoverDB_Click);
             // 
             // dataGridView1
             // 
@@ -93,62 +95,52 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 13;
             // 
-            // button3
+            // buttonRecoverByIndex
             // 
-            this.button3.Location = new System.Drawing.Point(58, 160);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonRecoverByIndex.AutoSize = true;
+            this.buttonRecoverByIndex.Location = new System.Drawing.Point(139, 54);
+            this.buttonRecoverByIndex.Name = "buttonRecoverByIndex";
+            this.buttonRecoverByIndex.Size = new System.Drawing.Size(128, 27);
+            this.buttonRecoverByIndex.TabIndex = 11;
+            this.buttonRecoverByIndex.Text = "Recover By Index";
+            this.buttonRecoverByIndex.UseVisualStyleBackColor = true;
+            this.buttonRecoverByIndex.Click += new System.EventHandler(this.buttonRecoverByIndex_Click);
             // 
-            // button2
+            // buttonAdd
             // 
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(139, 54);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 27);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Recover By Index";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAdd.AutoSize = true;
+            this.buttonAdd.Location = new System.Drawing.Point(33, 15);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 27);
+            this.buttonAdd.TabIndex = 10;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // button1
+            // buttonCreateDB
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(33, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button8
-            // 
-            this.button8.AutoSize = true;
-            this.button8.Location = new System.Drawing.Point(921, 24);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(83, 27);
-            this.button8.TabIndex = 19;
-            this.button8.Text = "Create DB";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.buttonCreateDB.AutoSize = true;
+            this.buttonCreateDB.Location = new System.Drawing.Point(921, 24);
+            this.buttonCreateDB.Name = "buttonCreateDB";
+            this.buttonCreateDB.Size = new System.Drawing.Size(83, 27);
+            this.buttonCreateDB.TabIndex = 19;
+            this.buttonCreateDB.Text = "Create DB";
+            this.buttonCreateDB.UseVisualStyleBackColor = true;
+            this.buttonCreateDB.Click += new System.EventHandler(this.buttonCreateDB_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 483);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.buttonCreateDB);
+            this.Controls.Add(this.buttonAddCustomer);
+            this.Controls.Add(this.buttonRemoveByIndex);
+            this.Controls.Add(this.buttonRecoverDB);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRecoverByIndex);
+            this.Controls.Add(this.buttonAdd);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -159,15 +151,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonAddCustomer;
+        private System.Windows.Forms.Button buttonRemoveByIndex;
+        private System.Windows.Forms.Button buttonRecoverDB;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button buttonRecoverByIndex;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonCreateDB;
     }
 }
 

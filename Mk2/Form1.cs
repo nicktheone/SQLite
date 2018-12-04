@@ -18,7 +18,7 @@ namespace Mk2
             InitializeComponent();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void buttonCreateDB_Click(object sender, EventArgs e)
         {
             var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
             var sql = "CREATE TABLE IF NOT EXISTS customers (id INTEGER PRIMARY KEY, firstName TEXT NOT NULL, lastName TEXT NOT NULL, address TEXT, phone TEXT, email TEXT, notes TEXT)";
@@ -28,31 +28,23 @@ namespace Mk2
             connection.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonRecoverDB_Click(object sender, EventArgs e)
         {
-            var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
-            var sql = "SELECT * FROM customers";
-            var command = new SQLiteCommand(sql, connection);
-            var dataAdapter = new SQLiteDataAdapter();
-            var dataTable = new DataTable();
-            connection.Open();
-            dataAdapter.SelectCommand = command;
-            dataAdapter.Fill(dataTable);
+            var dataTable = Database.RecoverDB();
             if (dataTable.Rows.Count > 0)
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
                 dataGridView1.DataSource = dataTable;
             }
-            connection.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             Database.AddCustomer("Nome", "Cognome");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonRecoverByIndex_Click(object sender, EventArgs e)
         {
             var dataTable = Database.RecoverByIndex(comboBox1.Text);
             if (dataTable.Rows.Count > 0)
@@ -61,6 +53,23 @@ namespace Mk2
                 dataGridView1.Refresh();
                 dataGridView1.DataSource = dataTable;
             }
+        }
+
+        private void buttonRemoveByIndex_Click(object sender, EventArgs e)
+        {
+            var dataTable = Database.RemoveByIndex(comboBox1.Text);
+            if (dataTable.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Refresh();
+                dataGridView1.DataSource = dataTable;
+            }
+        }
+
+        private void buttonAddCustomer_Click(object sender, EventArgs e)
+        {
+            var form = new Form2();
+            form.ShowDialog();
         }
     }
 }
