@@ -28,9 +28,86 @@ namespace Mk2
             connection.Close();
         }
 
-        private void buttonRecoverDB_Click(object sender, EventArgs e)
+        private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            var dataTable = Database.RecoverDB();
+            var customer = new Customer()
+            {
+                FirstName = TextBoxFirstName.Text,
+                LastName = TextBoxLastName.Text,
+                Address = TextBoxAddress.Text,
+                Phone = TextBoxPhone.Text,
+                Email = TextBoxEmail.Text,
+                Notes = TextBoxNotes.Text
+            };
+            Database.CreateCustomer(customer);
+            ClearText();
+        }
+
+        private void ButtonRead_Click(object sender, EventArgs e)
+        {
+            List<TextBox> textBoxes = new List<TextBox>()
+            {
+                TextBoxFirstName,
+                TextBoxLastName,
+                TextBoxAddress,
+
+                TextBoxPhone,
+                TextBoxEmail,
+                TextBoxNotes
+            };
+
+            if (textBoxes.All(p => string.IsNullOrWhiteSpace(p.Text)))
+            {
+                var dataTable = Database.ReadDB();
+                if (dataTable.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Refresh();
+                    dataGridView1.DataSource = dataTable;
+                }
+            }
+            else
+            {
+                var customer = new Customer()
+                {
+                    FirstName = TextBoxFirstName.Text,
+                    LastName = TextBoxLastName.Text,
+                    Address = TextBoxAddress.Text,
+                    Phone = TextBoxPhone.Text,
+                    Email = TextBoxEmail.Text,
+                    Notes = TextBoxNotes.Text
+                };
+
+                var dataTable = Database.ReadCustomer(customer);
+                if (dataTable.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Refresh();
+                    dataGridView1.DataSource = dataTable;
+                }
+                ClearText();
+            }
+        }
+
+        private void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+            Customer customer = new Customer()
+            {
+                Id = Convert.ToUInt16(dataGridView1.CurrentRow.Cells[0].Value.ToString()),
+                FirstName = TextBoxFirstName.Text,
+                LastName = TextBoxLastName.Text,
+                Address = TextBoxAddress.Text,
+                Phone = TextBoxPhone.Text,
+                Email = TextBoxEmail.Text,
+                Notes = TextBoxNotes.Text
+            };
+
+            Database.UpdateCustomer(customer);
+            ClearText();
+            ButtonUpdate.Enabled = false;
+            ButtonUpdate.Enabled = false;
+
+            var dataTable = Database.ReadDB();
             if (dataTable.Rows.Count > 0)
             {
                 dataGridView1.DataSource = null;
@@ -39,14 +116,19 @@ namespace Mk2
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            Database.AddCustomer("Nome", "Cognome");
-        }
+            Customer customer = new Customer()
+            {
+                Id = Convert.ToUInt16(dataGridView1.CurrentRow.Cells[0].Value.ToString()),
+            };
 
-        private void buttonRecoverByIndex_Click(object sender, EventArgs e)
-        {
-            var dataTable = Database.RecoverByIndex(comboBox1.Text);
+            Database.DeleteCustomer(customer);
+            ClearText();
+            ButtonUpdate.Enabled = false;
+            ButtonUpdate.Enabled = false;
+
+            var dataTable = Database.ReadDB();
             if (dataTable.Rows.Count > 0)
             {
                 dataGridView1.DataSource = null;
@@ -55,21 +137,37 @@ namespace Mk2
             }
         }
 
-        private void buttonRemoveByIndex_Click(object sender, EventArgs e)
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var dataTable = Database.RemoveByIndex(comboBox1.Text);
-            if (dataTable.Rows.Count > 0)
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            TextBoxFirstName.Text = row.Cells[1].Value.ToString();
+            TextBoxLastName.Text = row.Cells[2].Value.ToString();
+            TextBoxAddress.Text = row.Cells[3].Value.ToString();
+            TextBoxPhone.Text = row.Cells[4].Value.ToString();
+            TextBoxEmail.Text = row.Cells[5].Value.ToString();
+            TextBoxNotes.Text = row.Cells[6].Value.ToString();
+
+            ButtonUpdate.Enabled = true;
+            ButtonDelete.Enabled = true;
+        }
+        //Helper methods
+        private void ClearText()
+        {
+            List<TextBox> textBoxes = new List<TextBox>()
             {
-                dataGridView1.DataSource = null;
-                dataGridView1.Refresh();
-                dataGridView1.DataSource = dataTable;
+                TextBoxFirstName,
+                TextBoxLastName,
+                TextBoxAddress,
+                TextBoxPhone,
+                TextBoxEmail,
+                TextBoxNotes
+            };
+
+            foreach (var textBox in textBoxes)
+            {
+                textBox.Clear();
             }
         }
-
-        private void buttonAddCustomer_Click(object sender, EventArgs e)
-        {
-            var form = new Form2();
-            form.ShowDialog();
-        }
+        //End helper methods
     }
 }
