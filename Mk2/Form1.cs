@@ -40,7 +40,15 @@ namespace Mk2
                 Email = TextBoxEmail.Text,
                 Notes = TextBoxNotes.Text
             };
-            Database.CreateCustomer(customer);
+
+            if (!String.IsNullOrEmpty(TextBoxFirstName.Text) && !String.IsNullOrEmpty(TextBoxLastName.Text))
+            {
+                Database.CreateCustomer(customer);
+            }
+            else
+            {
+                MessageBox.Show("First name and last name required");
+            }
             ClearText();
         }
 
