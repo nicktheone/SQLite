@@ -21,7 +21,8 @@ namespace Mk2
         private void buttonCreateDB_Click(object sender, EventArgs e)
         {
             var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
-            var sql = "CREATE TABLE IF NOT EXISTS customers (id INTEGER PRIMARY KEY, firstName TEXT NOT NULL, lastName TEXT NOT NULL, address TEXT, phone TEXT, email TEXT, notes TEXT)";
+            var sql = "CREATE TABLE IF NOT EXISTS customers (id INTEGER PRIMARY KEY, firstName TEXT, lastName TEXT, address TEXT, phone TEXT, email TEXT, notes TEXT); " +
+                      "CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY, product TEXT, date TEXT, customerId INTEGER, FOREIGN KEY (customerId) REFERENCES customers(id))";
             var command = new SQLiteCommand(sql, connection);
             connection.Open();
             command.ExecuteNonQuery();
@@ -105,7 +106,7 @@ namespace Mk2
             Database.UpdateCustomer(customer);
             ClearText();
             ButtonUpdate.Enabled = false;
-            ButtonUpdate.Enabled = false;
+            ButtonDelete.Enabled = false;
 
             var dataTable = Database.ReadDB();
             if (dataTable.Rows.Count > 0)
@@ -120,13 +121,13 @@ namespace Mk2
         {
             Customer customer = new Customer()
             {
-                Id = Convert.ToUInt16(dataGridView1.CurrentRow.Cells[0].Value.ToString()),
+                Id = Convert.ToInt16(dataGridView1.Tag)
             };
 
             Database.DeleteCustomer(customer);
             ClearText();
             ButtonUpdate.Enabled = false;
-            ButtonUpdate.Enabled = false;
+            ButtonDelete.Enabled = false;
 
             var dataTable = Database.ReadDB();
             if (dataTable.Rows.Count > 0)
@@ -146,10 +147,12 @@ namespace Mk2
             TextBoxPhone.Text = row.Cells[4].Value.ToString();
             TextBoxEmail.Text = row.Cells[5].Value.ToString();
             TextBoxNotes.Text = row.Cells[6].Value.ToString();
+            dataGridView1.Tag = row.Cells[0].Value.ToString();
 
             ButtonUpdate.Enabled = true;
             ButtonDelete.Enabled = true;
         }
+        
         //Helper methods
         private void ClearText()
         {
