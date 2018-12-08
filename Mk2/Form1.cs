@@ -59,7 +59,6 @@ namespace Mk2
                 TextBoxFirstName,
                 TextBoxLastName,
                 TextBoxAddress,
-
                 TextBoxPhone,
                 TextBoxEmail,
                 TextBoxNotes
