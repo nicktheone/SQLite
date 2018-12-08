@@ -48,26 +48,27 @@
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.ButtonCreate = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(530, 69);
+            this.dataGridView1.Location = new System.Drawing.Point(530, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 571);
+            this.dataGridView1.Size = new System.Drawing.Size(801, 410);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // buttonCreateDB
             // 
             this.buttonCreateDB.AutoSize = true;
-            this.buttonCreateDB.Location = new System.Drawing.Point(389, 440);
+            this.buttonCreateDB.Location = new System.Drawing.Point(395, 297);
             this.buttonCreateDB.Name = "buttonCreateDB";
             this.buttonCreateDB.Size = new System.Drawing.Size(110, 30);
             this.buttonCreateDB.TabIndex = 19;
@@ -83,7 +84,7 @@
             this.panel1.Controls.Add(this.LabelEmail);
             this.panel1.Controls.Add(this.LabelAddress);
             this.panel1.Controls.Add(this.LabelPhone);
-            this.panel1.Location = new System.Drawing.Point(2, 240);
+            this.panel1.Location = new System.Drawing.Point(8, 97);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(134, 245);
             this.panel1.TabIndex = 41;
@@ -155,7 +156,7 @@
             // 
             // TextBoxNotes
             // 
-            this.TextBoxNotes.Location = new System.Drawing.Point(156, 380);
+            this.TextBoxNotes.Location = new System.Drawing.Point(162, 237);
             this.TextBoxNotes.Multiline = true;
             this.TextBoxNotes.Name = "TextBoxNotes";
             this.TextBoxNotes.Size = new System.Drawing.Size(200, 105);
@@ -163,35 +164,35 @@
             // 
             // TextBoxEmail
             // 
-            this.TextBoxEmail.Location = new System.Drawing.Point(156, 352);
+            this.TextBoxEmail.Location = new System.Drawing.Point(162, 209);
             this.TextBoxEmail.Name = "TextBoxEmail";
             this.TextBoxEmail.Size = new System.Drawing.Size(200, 22);
             this.TextBoxEmail.TabIndex = 39;
             // 
             // TextBoxPhone
             // 
-            this.TextBoxPhone.Location = new System.Drawing.Point(156, 324);
+            this.TextBoxPhone.Location = new System.Drawing.Point(162, 181);
             this.TextBoxPhone.Name = "TextBoxPhone";
             this.TextBoxPhone.Size = new System.Drawing.Size(200, 22);
             this.TextBoxPhone.TabIndex = 38;
             // 
             // TextBoxAddress
             // 
-            this.TextBoxAddress.Location = new System.Drawing.Point(156, 296);
+            this.TextBoxAddress.Location = new System.Drawing.Point(162, 153);
             this.TextBoxAddress.Name = "TextBoxAddress";
             this.TextBoxAddress.Size = new System.Drawing.Size(200, 22);
             this.TextBoxAddress.TabIndex = 37;
             // 
             // TextBoxLastName
             // 
-            this.TextBoxLastName.Location = new System.Drawing.Point(156, 268);
+            this.TextBoxLastName.Location = new System.Drawing.Point(162, 125);
             this.TextBoxLastName.Name = "TextBoxLastName";
             this.TextBoxLastName.Size = new System.Drawing.Size(200, 22);
             this.TextBoxLastName.TabIndex = 36;
             // 
             // TextBoxFirstName
             // 
-            this.TextBoxFirstName.Location = new System.Drawing.Point(156, 240);
+            this.TextBoxFirstName.Location = new System.Drawing.Point(162, 97);
             this.TextBoxFirstName.Name = "TextBoxFirstName";
             this.TextBoxFirstName.Size = new System.Drawing.Size(200, 22);
             this.TextBoxFirstName.TabIndex = 35;
@@ -200,7 +201,7 @@
             // 
             this.LabelAddCustomer.AutoSize = true;
             this.LabelAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelAddCustomer.Location = new System.Drawing.Point(126, 167);
+            this.LabelAddCustomer.Location = new System.Drawing.Point(132, 24);
             this.LabelAddCustomer.Name = "LabelAddCustomer";
             this.LabelAddCustomer.Size = new System.Drawing.Size(221, 39);
             this.LabelAddCustomer.TabIndex = 34;
@@ -209,7 +210,7 @@
             // 
             // ButtonRead
             // 
-            this.ButtonRead.Location = new System.Drawing.Point(389, 276);
+            this.ButtonRead.Location = new System.Drawing.Point(395, 133);
             this.ButtonRead.Name = "ButtonRead";
             this.ButtonRead.Size = new System.Drawing.Size(110, 30);
             this.ButtonRead.TabIndex = 31;
@@ -220,7 +221,7 @@
             // ButtonDelete
             // 
             this.ButtonDelete.Enabled = false;
-            this.ButtonDelete.Location = new System.Drawing.Point(389, 348);
+            this.ButtonDelete.Location = new System.Drawing.Point(395, 205);
             this.ButtonDelete.Name = "ButtonDelete";
             this.ButtonDelete.Size = new System.Drawing.Size(110, 30);
             this.ButtonDelete.TabIndex = 33;
@@ -231,7 +232,7 @@
             // ButtonUpdate
             // 
             this.ButtonUpdate.Enabled = false;
-            this.ButtonUpdate.Location = new System.Drawing.Point(389, 312);
+            this.ButtonUpdate.Location = new System.Drawing.Point(395, 169);
             this.ButtonUpdate.Name = "ButtonUpdate";
             this.ButtonUpdate.Size = new System.Drawing.Size(110, 30);
             this.ButtonUpdate.TabIndex = 32;
@@ -241,7 +242,7 @@
             // 
             // ButtonCreate
             // 
-            this.ButtonCreate.Location = new System.Drawing.Point(389, 240);
+            this.ButtonCreate.Location = new System.Drawing.Point(395, 97);
             this.ButtonCreate.Name = "ButtonCreate";
             this.ButtonCreate.Size = new System.Drawing.Size(110, 30);
             this.ButtonCreate.TabIndex = 30;
@@ -249,21 +250,11 @@
             this.ButtonCreate.UseVisualStyleBackColor = true;
             this.ButtonCreate.Click += new System.EventHandler(this.ButtonCreate_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1321, 63);
-            this.panel2.TabIndex = 42;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1321, 652);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1343, 434);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TextBoxNotes);
             this.Controls.Add(this.TextBoxEmail);
@@ -278,7 +269,7 @@
             this.Controls.Add(this.ButtonCreate);
             this.Controls.Add(this.buttonCreateDB);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -310,7 +301,6 @@
         private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.Button ButtonUpdate;
         private System.Windows.Forms.Button ButtonCreate;
-        private System.Windows.Forms.Panel panel2;
     }
 }
 
