@@ -31,51 +31,7 @@ namespace Mk2
 
         private void ButtonCreate_Click(object sender, EventArgs e)
         {
-            var customer = new Customer()
-            {
-                FirstName = TextBoxFirstName.Text,
-                LastName = TextBoxLastName.Text,
-                Address = TextBoxAddress.Text,
-                Phone = TextBoxPhone.Text,
-                Email = TextBoxEmail.Text,
-                Notes = TextBoxNotes.Text
-            };
-
-            if (!String.IsNullOrEmpty(TextBoxFirstName.Text) && !String.IsNullOrEmpty(TextBoxLastName.Text))
-            {
-                Database.CreateCustomer(customer);
-            }
-            else
-            {
-                MessageBox.Show("First name and last name required");
-            }
-            ClearText();
-        }
-
-        private void ButtonRead_Click(object sender, EventArgs e)
-        {
-            List<TextBox> textBoxes = new List<TextBox>()
-            {
-                TextBoxFirstName,
-                TextBoxLastName,
-                TextBoxAddress,
-
-                TextBoxPhone,
-                TextBoxEmail,
-                TextBoxNotes
-            };
-
-            if (textBoxes.All(p => string.IsNullOrWhiteSpace(p.Text)))
-            {
-                var dataTable = Database.ReadDB();
-                if (dataTable.Rows.Count > 0)
-                {
-                    dataGridView1.DataSource = null;
-                    dataGridView1.Refresh();
-                    dataGridView1.DataSource = dataTable;
-                }
-            }
-            else
+            if (tabControl1.SelectedTab == tabPageCustomer)
             {
                 var customer = new Customer()
                 {
@@ -87,14 +43,93 @@ namespace Mk2
                     Notes = TextBoxNotes.Text
                 };
 
-                var dataTable = Database.ReadCustomer(customer);
+                if (!String.IsNullOrEmpty(TextBoxFirstName.Text) && !String.IsNullOrEmpty(TextBoxLastName.Text))
+                {
+                    Database.CreateCustomer(customer);
+                }
+                else
+                {
+                    MessageBox.Show("First name and last name required");
+                }
+                ClearText();
+            }
+            else
+            {
+                var order = new Order()
+                {
+                    Product = TextBoxProduct.Text,
+                    Date = TextBoxDate.Text,
+                    CustomerId = Convert.ToInt16(TextBoxCustomerId.Text)
+                };
+
+                if (!String.IsNullOrEmpty(TextBoxProduct.Text) && !String.IsNullOrEmpty(TextBoxCustomerId.Text))
+                {
+                    Database.CreateOrder(order);
+                }
+                else
+                {
+                    MessageBox.Show("Product and Customer Id required");
+                }
+                ClearText();
+            }
+        }
+
+        private void ButtonRead_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPageCustomer)
+            {
+                List<TextBox> textBoxes = new List<TextBox>()
+            {
+                TextBoxFirstName,
+                TextBoxLastName,
+                TextBoxAddress,
+
+                TextBoxPhone,
+                TextBoxEmail,
+                TextBoxNotes
+            };
+
+                if (textBoxes.All(p => string.IsNullOrWhiteSpace(p.Text)))
+                {
+                    var dataTable = Database.ReadDB("customers");
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.Refresh();
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+                else
+                {
+                    var customer = new Customer()
+                    {
+                        FirstName = TextBoxFirstName.Text,
+                        LastName = TextBoxLastName.Text,
+                        Address = TextBoxAddress.Text,
+                        Phone = TextBoxPhone.Text,
+                        Email = TextBoxEmail.Text,
+                        Notes = TextBoxNotes.Text
+                    };
+
+                    var dataTable = Database.ReadCustomer(customer);
+                    if (dataTable.Rows.Count > 0)
+                    {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.Refresh();
+                        dataGridView1.DataSource = dataTable;
+                    }
+                    ClearText();
+                }
+            }
+            else
+            {
+                var dataTable = Database.ReadDB("orders");
                 if (dataTable.Rows.Count > 0)
                 {
                     dataGridView1.DataSource = null;
                     dataGridView1.Refresh();
                     dataGridView1.DataSource = dataTable;
                 }
-                ClearText();
             }
         }
 
@@ -116,7 +151,7 @@ namespace Mk2
             ButtonUpdate.Enabled = false;
             ButtonDelete.Enabled = false;
 
-            var dataTable = Database.ReadDB();
+            var dataTable = Database.ReadDB("customers");
             if (dataTable.Rows.Count > 0)
             {
                 dataGridView1.DataSource = null;
@@ -137,7 +172,7 @@ namespace Mk2
             ButtonUpdate.Enabled = false;
             ButtonDelete.Enabled = false;
 
-            var dataTable = Database.ReadDB();
+            var dataTable = Database.ReadDB("customers");
             if (dataTable.Rows.Count > 0)
             {
                 dataGridView1.DataSource = null;

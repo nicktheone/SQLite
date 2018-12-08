@@ -28,12 +28,47 @@ namespace Mk2
             connection.Close();
         }
 
-        public static DataTable ReadDB()
+        public static void CreateOrder(Order order)
+        {
+            var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
+            var foreignKey = connection.CreateCommand();
+            foreignKey.CommandText = "PRAGMA foreign_keys = ON";
+            var command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO orders (product, date, customerId) VALUES (@product, @date, @customerId)";
+            command.Parameters.AddWithValue("@product", order.Product);
+            command.Parameters.AddWithValue("@date", order.Date);
+            command.Parameters.AddWithValue("@customerId", order.CustomerId);
+
+            connection.Open();
+            foreignKey.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        //public static DataTable ReadDB()
+        //{
+        //    var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
+
+        //    var command = connection.CreateCommand();
+        //    command.CommandText = "SELECT * FROM customers";
+
+        //    var dataAdapter = new SQLiteDataAdapter();
+        //    var dataTable = new DataTable();
+
+        //    connection.Open();
+        //    dataAdapter.SelectCommand = command;
+        //    dataAdapter.Fill(dataTable);
+        //    connection.Close();
+
+        //    return dataTable;
+        //}
+
+        public static DataTable ReadDB(string table)
         {
             var connection = new SQLiteConnection("Data Source = prova.sqlite; Version=3;");
 
             var command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM customers";
+            command.CommandText = "SELECT * FROM " + table;
 
             var dataAdapter = new SQLiteDataAdapter();
             var dataTable = new DataTable();
